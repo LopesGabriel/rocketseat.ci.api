@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  database:
+    image: postgres:16.2-alpine3.19
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=devops
+      - POSTGRES_PASSWORD=d3v0ps
+      - POSTGRES_DB=devops
+    volumes:
+      - db:/var/lib/postgresql
+
+  api-rocket:
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    environment:
+      - DATABASE_URL=postgresql://devops:d3v0ps@database:5432/devops?schema=public
+    depends_on:
+      - database
+
+volumes:
+  db:
