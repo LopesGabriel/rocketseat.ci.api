@@ -1,5 +1,6 @@
 import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
 import { DatabaseService } from './database.service';
+import { AppService } from './app.service';
 
 class NoteDto {
   id?: string;
@@ -11,7 +12,10 @@ class NoteDto {
 
 @Controller()
 export class AppController {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(
+    private readonly databaseService: DatabaseService,
+    private readonly appService: AppService,
+  ) {}
 
   @Get()
   async listNotes() {
@@ -37,5 +41,9 @@ export class AppController {
     });
 
     return note;
+  }
+
+  getHello() {
+    return this.appService.getHello();
   }
 }
