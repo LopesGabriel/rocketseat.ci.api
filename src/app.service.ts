@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
+  getHello(name: string = 'World'): string {
     const now = new Date();
     const currentTime = now.toLocaleString(new Intl.Locale('pt-BR'));
-    return `Hello, Gabriel! The current time is ${currentTime}.`;
+    return `Hello, ${name}! The current time is ${currentTime}.`;
   }
 }
