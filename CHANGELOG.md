@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/LopesGabriel/rocketseat.ci.api/compare/v1.0.0...v1.1.0) (2024-07-22)
+
+
+### Features
+
+* add greeting route ([b7ada29](https://github.com/LopesGabriel/rocketseat.ci.api/commit/b7ada299fc44cccae6ce51ead49021b6db1b450b))
+
 # 1.0.0 (2024-07-22)
 
 
