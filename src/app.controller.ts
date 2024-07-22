@@ -1,5 +1,5 @@
 // import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 // import { DatabaseService } from './database.service';
 import { AppService } from './app.service';
 
@@ -47,5 +47,10 @@ export class AppController {
   @Get()
   getHello() {
     return this.appService.getHello();
+  }
+
+  @Get(':name')
+  getGreeting(@Param('name') name: string): string {
+    return this.appService.getHello(name);
   }
 }

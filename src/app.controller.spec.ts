@@ -16,8 +16,14 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
+    it('should return "Hello, World!"', () => {
       expect(appController.getHello()).toContain(
+        'Hello, World! The current time is',
+      );
+    });
+
+    it('should return "Hello, Gabriel!"', () => {
+      expect(appController.getGreeting('Gabriel')).toContain(
         'Hello, Gabriel! The current time is',
       );
     });
