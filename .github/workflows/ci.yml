@@ -25,6 +25,11 @@ jobs:
       - run: npm ci
       - run: npm run test
 
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
       - name: Generate tag
         id: generate_tag
         run: |
@@ -47,7 +52,6 @@ jobs:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           TAG: ${{ steps.generate_tag.outputs.sha }}
         run: |
-          echo 'DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"' > .env
           docker build -t $REGISTRY/rocketseat-ci:$TAG .
           docker push $REGISTRY/rocketseat-ci:$TAG
           docker tag $REGISTRY/rocketseat-ci:$TAG $REGISTRY/rocketseat-ci:latest
